@@ -1,0 +1,230 @@
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #20302b;
+  background: #f4f0e6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f4f0e6;
+  background-image: linear-gradient(rgba(32, 48, 43, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(32, 48, 43, 0.055) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(100% - 2rem, 1060px);
+  margin: 0 auto;
+  padding: 3.5rem 0;
+}
+
+.app-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 3px solid #20302b;
+  padding-bottom: 1.2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: #ae4924;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+}
+
+.session-note {
+  margin: 0;
+  color: #53635d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.7fr);
+  gap: 3rem;
+  padding-top: 2.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.upload-form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.field-group {
+  display: grid;
+  gap: 0.4rem;
+}
+
+label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #7d8b84;
+  border-radius: 2px;
+  background: #fffdf7;
+  padding: 0.7rem;
+}
+
+input:focus {
+  outline: 3px solid #e6b850;
+  outline-offset: 1px;
+}
+
+.primary-button,
+.download-link {
+  border: 0;
+  border-radius: 2px;
+  background: #20302b;
+  color: #fffdf7;
+  cursor: pointer;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.primary-button:hover,
+.download-link:hover {
+  background: #ae4924;
+}
+
+.primary-button:disabled {
+  cursor: progress;
+  opacity: 0.65;
+}
+
+.form-error,
+.page-error {
+  color: #9d2517;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+}
+
+.page-error {
+  border-left: 3px solid #9d2517;
+  padding-left: 0.7rem;
+}
+
+.document-table-wrapper {
+  overflow-x: auto;
+}
+
+.document-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+}
+
+.document-table th,
+.document-table td {
+  border-bottom: 1px solid #bfc4b8;
+  padding: 0.9rem 0.6rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.document-table th {
+  color: #53635d;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.document-table td:first-child {
+  min-width: 150px;
+}
+
+.document-table strong,
+.document-table span {
+  display: block;
+}
+
+.document-table span {
+  color: #64736c;
+  font-size: 0.72rem;
+  margin-top: 0.2rem;
+}
+
+.download-link {
+  display: inline-block;
+  padding: 0.5rem 0.65rem;
+}
+
+.status-message,
+.empty-state {
+  border-top: 1px solid #bfc4b8;
+  color: #53635d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  padding-top: 1rem;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 2rem 0;
+  }
+
+  .app-header,
+  .workspace-grid {
+    display: block;
+  }
+
+  .session-note {
+    margin-top: 0.8rem;
+  }
+
+  .upload-section {
+    border-bottom: 1px solid #bfc4b8;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+}
