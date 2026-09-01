@@ -1,7 +1,12 @@
 const { randomUUID } = require('crypto');
+const defaultDocumentRepository = require('../repositories/documents.repository');
 
-function createDocument(file, owner, documentRepository) {
-  const document = {
+function resolveRepository(documentRepository) {
+  return documentRepository || defaultDocumentRepository;
+}
+
+function buildDocument(file, owner) {
+  return {
     id: randomUUID(),
     originalName: file.originalname,
     storedName: file.filename,
@@ -10,20 +15,29 @@ function createDocument(file, owner, documentRepository) {
     uploadedAt: new Date().toISOString(),
     owner
   };
-
-  return documentRepository.create(document);
 }
 
-function listDocuments(documentRepository) {
-  return documentRepository.findAll();
+function createDocument(file, owner, documentRepository = defaultDocumentRepository) {
+  const repository = resolveRepository(documentRepository);
+  const document = buildDocument(file, owner);
+
+  return repository.create(document);
 }
 
-function getDocumentById(id, documentRepository) {
-  return documentRepository.findById(id);
+function listDocuments(documentRepository = defaultDocumentRepository) {
+  const repository = resolveRepository(documentRepository);
+  return repository.findAll();
+}
+
+function getDocumentById(id, documentRepository = defaultDocumentRepository) {
+  const repository = resolveRepository(documentRepository);
+  return repository.findById(id);
 }
 
 module.exports = {
   createDocument,
   listDocuments,
-  getDocumentById
+  getDocumentById,
+  buildDocument,
+  resolveRepository
 };
